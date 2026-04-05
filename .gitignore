@@ -1,3 +1,9 @@
+# Environment
+.env
 .venv/
-tests/
-.python-version
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store

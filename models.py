@@ -17,7 +17,7 @@ class AgentState(BaseModel):
     goal: str
     results: list[SearchResult]
     iteration: int
-    done: bool
+    done: bool = False
 
 class Report(BaseModel):
     topic: str
