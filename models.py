@@ -8,10 +8,12 @@ class Perspective(BaseModel):
     name: str
     summary: str
 
+class Result(Source):
+    content: str
+
 class SearchResult(BaseModel):
     query: str
-    source: Source
-    summary: str
+    results: list[Result]
 
 class AgentState(BaseModel):
     goal: str
