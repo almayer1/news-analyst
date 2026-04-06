@@ -1,7 +1,7 @@
 from tavily import TavilyClient
 
 from config import settings
-from models import SearchResult, Result
+from models import SearchResult, Result, Report, Perspective, Source
 
 def search_web(query: str) -> SearchResult:
     # Search web
@@ -23,3 +23,11 @@ def search_web(query: str) -> SearchResult:
         query=query,
         results=results
     )
+
+def write_report(goal: str, perspectives: list[Perspective], conclusion: str, sources: list[Source]) -> Report:
+    pass
+
+TOOLS = {
+    "search_web": search_web,
+    "write_report": write_report
+}

@@ -11,18 +11,22 @@ class Perspective(BaseModel):
 class Result(Source):
     content: str
 
+class Action(BaseModel):
+    tool: str
+    args: dict
+
 class SearchResult(BaseModel):
     query: str
     results: list[Result]
 
 class AgentState(BaseModel):
     goal: str
-    results: list[SearchResult]
+    history: list[SearchResult]
     iteration: int
     done: bool = False
 
 class Report(BaseModel):
-    topic: str
+    goal: str
     perspectives: list[Perspective]
     conclusion: str
     sources: list[Source]
