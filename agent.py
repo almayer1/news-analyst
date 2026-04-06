@@ -46,12 +46,16 @@ def run(goal: str) -> Report:
     )
     # while not done and iteration are less than 10
     while not state.done and state.iteration < settings.max_iterations:
-        state.iteration += 1
         # Think
         action = think(state)
         
         # Act
-        result = TOOLS[action.tool](**action.args)
+        try:
+            result = TOOLS[action.tool](**action.args)
+        except Exception:
+            continue
+
+        state.iteration += 1
 
         #Observe
         if action.tool == "write_report":
