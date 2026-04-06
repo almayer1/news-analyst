@@ -31,3 +31,5 @@ class Report(BaseModel):
     conclusion: str
     sources: list[Source]
 
+class RequestResearch(BaseModel):
+    goal: str

@@ -9,6 +9,8 @@ class Settings(BaseSettings):
     # Tavily
     tavily_api_key: str
 
+    max_iterations: int = 10
+
     model_config = {"env_file": ".env"}
 
 settings = Settings()

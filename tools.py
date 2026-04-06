@@ -24,8 +24,13 @@ def search_web(query: str) -> SearchResult:
         results=results
     )
 
-def write_report(goal: str, perspectives: list[Perspective], conclusion: str, sources: list[Source]) -> Report:
-    pass
+def write_report(goal: str, perspectives: list[dict], conclusion: str, sources: list[dict]) -> Report:
+    return Report(
+        goal=goal,
+        perspectives=[Perspective(**p) for p in perspectives],
+        conclusion=conclusion,
+        sources=[Source(**s) for s in sources]
+    )
 
 TOOLS = {
     "search_web": search_web,
