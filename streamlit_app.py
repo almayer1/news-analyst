@@ -35,5 +35,3 @@ with st.expander("Past Records"):
                 st.write(f"**{p['name']}**: {p['summary']}")
             for s in report["sources"]:
                 st.markdown(f"[{s['title']}]({s['url']})")
-        
-    

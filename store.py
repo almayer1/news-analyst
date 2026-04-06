@@ -37,13 +37,14 @@ def save_report(report: Report) -> int:
     return cursor.lastrowid
 
 
-def get_reports() -> list[Report]:
+def get_reports(num_reports: int = 10) -> list[Report]:
     conn = get_db()
     cursor = conn.execute("""
-        SELECT * 
+        SELECT *
         FROM reports
-    """)
-    
+        ORDER BY id DESC LIMIT ?
+    """, (num_reports,))
+
     results = cursor.fetchall()
     reports = []
     for report in results:
