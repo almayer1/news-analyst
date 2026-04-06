@@ -16,6 +16,7 @@ RULES:
 - ONLY use URLs from the collected data as sources
 - search AT LEAST 3 times with different angles before writing
 - ONLY call your next needed tool
+- cite at least 3 sources
 
 TOOLS: format -> "tool_name", args(parameter: parameter_type). Note
 - "search_web", args(query: str). Allows you to search the web
@@ -37,7 +38,7 @@ client = OpenAI(
     api_key=settings.llm_api_key
 )
 
-def run(goal: str) -> Report | None:
+def run(goal: str) -> Report:
     state = AgentState(
         goal=goal,
         history=[],
