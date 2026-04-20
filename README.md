@@ -29,6 +29,7 @@ The LLM controls the flow — it decides how many searches to run and when to st
 | Layer | Tech |
 |---|---|
 | LLM | Ollama (llama3.2) — runs locally |
+| LLM Client | ollama Python package |
 | Web Search | Tavily API |
 | API | FastAPI |
 | Frontend | Streamlit |
@@ -62,31 +63,24 @@ uv sync
 ollama pull llama3.2
 
 # Configure environment
-# Create a .env file with:
-# TAVILY_API_KEY=your_key_here
-# LLM_BASE_URL=http://localhost:11434/v1
+cp .env.example .env
+# Edit .env and set: TAVILY_API_KEY=your_key_here
 ```
 
 Get a free Tavily API key at [tavily.com](https://tavily.com) (1000 searches/month free).
 
 ## Running
 
-Start Ollama:
 ```bash
-ollama serve
+make run
 ```
 
-Start the API (in a separate terminal):
-```bash
-uv run uvicorn app:app --reload
-```
+This starts Ollama, the API, and the UI in one command. Open `http://localhost:8501` for the UI or `http://localhost:8000/docs` to test the API directly.
 
-Start the UI (in a separate terminal):
+To stop all services:
 ```bash
-uv run streamlit run streamlit_app.py
+make stop
 ```
-
-Open `http://localhost:8501` for the UI or `http://localhost:8000/docs` to test the API directly.
 
 ## Key Design Decisions
 
