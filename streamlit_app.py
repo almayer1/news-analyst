@@ -3,8 +3,11 @@ import requests
 
 @st.cache_data
 def fetch_reports():
-    response = requests.get("http://localhost:8000/reports")
-    return response.json()
+    try:
+        response = requests.get("http://localhost:8000/reports", timeout=5)
+        return response.json()
+    except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
+        return []
 
 st.title("News Analyst Agent")
 
